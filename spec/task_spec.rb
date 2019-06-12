@@ -2,7 +2,7 @@ require('rspec')
 require('pg')
 require('task')
 
-DB = PG.connect({:dbname => 'subjects_test'})
+ENV['RACK_ENV'] = 'test'
 
 RSpec.configure do |config|
   config.after(:each) do

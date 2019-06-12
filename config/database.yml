@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: subjects
+test:
+  adapter: postgresql
+  database: subjects_test
