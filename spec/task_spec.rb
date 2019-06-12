@@ -6,7 +6,7 @@ ENV['RACK_ENV'] = 'test'
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec("DELETE FROM subjects *;")
+    DB.exec("DELETE FROM tasks *;")
   end
 end
 

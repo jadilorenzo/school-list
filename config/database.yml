@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: subjects
+  database: tasks
 test:
   adapter: postgresql
-  database: subjects_test
+  database: tasks_test

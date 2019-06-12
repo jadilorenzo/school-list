@@ -1,15 +1,15 @@
 require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
+require("sinatra/activerecord")
 require('./lib/task')
 require('pg')
 require('pry')
 set :bind,'0.0.0.0'
 
 get('/') do
-  @list_title = Task.list_titles
   @list = Task.all
-  erb :home
+  erb(:home)
 end
 
 get('/add') do
@@ -24,9 +24,4 @@ post('/') do
 
   @list = Task.all
   erb :home
-end
-
-get('/remove/:title') do
-  Task.remove(params['title'])
-  erb :removed
 end
