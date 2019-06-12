@@ -1,0 +1,11 @@
+<h1>Your Subjects</h1>
+<a href="/add">Add...</a>
+<% @list.each do |item| %>
+  <div class='list-wrap'>
+    <li>
+        <div>
+          <p><%= item.title %> - <%= item.time %> minutes <a href="/remove/<%= item.title %>" class='add'><b>-</b></a></p>
+        </div>
+    </li>
+  </div>
+<% end %>
