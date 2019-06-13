@@ -2,13 +2,13 @@ require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
 require("sinatra/activerecord")
-require('./lib/task')
+require('./lib/subject')
 require('pg')
 require('pry')
 set :bind,'0.0.0.0'
 
 get('/') do
-  @list = Task.all
+  @list = Subject.all
   erb(:home)
 end
 
@@ -17,11 +17,11 @@ get('/add') do
 end
 
 post('/') do
-  Task.new({
+  Subject.new({
     title: params['title'],
     time: params['time']
   }).save()
 
-  @list = Task.all
+  @list = Subject.all
   erb :home
 end
