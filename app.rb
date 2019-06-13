@@ -8,7 +8,7 @@ require('pry')
 set :bind,'0.0.0.0'
 
 get('/') do
-  @list = Subject.all
+  @list = Subject.all_ordered()
   erb(:home)
 end
 
@@ -22,7 +22,7 @@ post('/') do
     time: params['time']
   }).save()
 
-  @list = Subject.all
+  @list = Subject.all_ordered()
   erb :home
 end
 
@@ -33,8 +33,9 @@ end
 
 patch("/subjects/:id") do
   title = params.fetch("title")
+  time = params.fetch("time")
   @subject = Subject.find(params.fetch("id").to_i())
-  @subject.update({:title => title})
-  @list = Subject.all()
-  erb(:home)
+  @subject.update({:title => title, :time => time})
+  @list = Subject.all_ordered()
+  erb :home
 end
