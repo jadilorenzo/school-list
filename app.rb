@@ -25,3 +25,16 @@ post('/') do
   @list = Subject.all
   erb :home
 end
+
+get('/subjects/:id/edit') do
+  @subject = Subject.find(params.fetch("id").to_i())
+  erb(:subject_edit)
+end
+
+patch("/subjects/:id") do
+  title = params.fetch("title")
+  @subject = Subject.find(params.fetch("id").to_i())
+  @subject.update({:title => title})
+  @list = Subject.all()
+  erb(:home)
+end
